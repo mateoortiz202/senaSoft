@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bienvenido a sondeo.net</h1>
+    {% if sondeos %}
+        {% for sondeito in sondeos %}
+            <div>
+                <h1>{{ sondeito.asunto }}</h1><br/>
+                <section>
+                    {{ sondeito.descripcion }}
+                </section>
+            </div>
+            <h3>Respuestas</h3>
+            {% if respuestas %}
+                {% for respuesta in respuestas %}
+                    
+                    {% if respuesta.idSondeo.idSondeos == sondeito.idSondeos %}
+                        <div>    
+                            <h5>{{ respuesta.idUsuario }}</h5><br/>
+                            <section border="1">
+                                {{ respuesta.respuesta }}
+                            </section>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                
+            {% endif %}
+            
+        {% endfor %}
+
+    {% endif %}
+</body>
+</html>
