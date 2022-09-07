@@ -9,11 +9,11 @@ def inicio (request):
     #del request.session['autenticado']
     sess = request.session.get('autenticado', False)
     contexto = {'sondeos': Son, 'respuestas' : Res, 'autenticacion': sess}
-    return render(request, "index.html", contexto)
+    return render(request, "index/index.html", contexto)
 
 #renderizar login
 def login (request):
-    return render(request, "login.html")
+    return render(request, "login/login.html")
 
 #renderizar validar y redirigir usuario
 def logear(request):
