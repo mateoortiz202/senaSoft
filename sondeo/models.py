@@ -11,12 +11,15 @@ class Usuario(models.Model):
         ('cc', 'Cedula de Ciudadania'),
         ('ce', 'Cedula de Extranjeria'),
     )
-    tipoDocumetno = models.CharField(max_length=2, choices=tD)
+    tipoDocumento = models.CharField(max_length=2, choices=tD)
     numeroDocumento = models.CharField(max_length=100)
     sx = (
         ('M', 'Masculino'),
         ('F', 'Femenino'),
-    )
+        ('I', 'Intersexual'),
+        ('IN', 'Indefinido'),
+        ('P', 'Prefieren no decir'),
+    )   
     sexo = models.CharField(max_length=2, choices=sx)
     telefonoCelular = models.IntegerField()
     telefonoFijo = models.IntegerField()
@@ -26,12 +29,8 @@ class Usuario(models.Model):
     barrio_vereda = models.CharField(max_length=100, default="Fatima")
     fechaNacimiento = models.DateField()
     
-    et =(
-        ("A","afro"),
-        ("P","palenque"),
-        ('ng','ninguno'),
-    )
-    etnia = models.CharField(max_length=2, choices=et)
+   
+    etnia = models.CharField(max_length=100, default="ninguno")
     condicionDiscapacidad = models.CharField(max_length=100, default="ninguna")
     estractoRecidencial = models.IntegerField()
     nivelEducativo= models.CharField(max_length=100)
@@ -48,7 +47,7 @@ class Usuario(models.Model):
         ('Tb','Tablet'),
         ('Ot','Otro')
     )
-    tipoDispositivo = models.CharField(max_length=2, choices=cdp, default="TM")
+    tipoDispositivo = models.CharField(max_length=100, choices=cdp, default="TM")
     #conectividad
     cn = (
         ('s', 'si'),
@@ -66,24 +65,8 @@ class Usuario(models.Model):
     
     def __str__(self) -> str:
         return str(self.nombresCompletos)
-    
-class Estado(models.Model):
+  
 
-    #filtro
-    fl=(
-        ("A","afro"),
-        ("P","palenque"),
-        ("H","hombres"),
-        ("M","Mujeres"),
-        ("MY","Mayores"),
-        ("T","todos"),
-    )
-    filtro = models.CharField(max_length=100,choices=fl,default='T')
-
-
-    def __str__(self) -> str:
-        return self.filtro
-    
 class Administradores(models.Model):
 
     idAdministrador = models.IntegerField(primary_key=True)
@@ -105,13 +88,22 @@ class Certificados(models.Model):
 class Sondeos(models.Model):
     idSondeos = models.AutoField(primary_key=True)
     idAdmin = models.ForeignKey(Administradores, on_delete= models.CASCADE)
+    
     asunto = models.CharField(max_length=100)
     descripcion = models.TextField()
-    estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    # hb=habilitado o no
+    hb = (
+        ('s', 'si'),
+        ('n', 'no'),        
+    )
+    habilitado = models.CharField(max_length=2, choices=hb, default="n")
+    grupoPoblacional = models.CharField(max_length=100)
+    comuna = models.CharField(max_length=100)
+    barrio = models.CharField(max_length=100)
     imagen = models.CharField(max_length=100)
-    edadMinima = models.CharField(max_length=3)
+    edadMinima = models.IntegerField(default=0)
+    edadMaxima = models.IntegerField(default=0)
     tematica = models.CharField(max_length=100)
-    #publico = models., ----no tiene funcion
     fechaPublicacion = models.DateTimeField()
     fechaFinPublicacion = models.DateTimeField()
     fechaCreacion = models.DateTimeField(auto_now_add=True)

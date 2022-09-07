@@ -48,7 +48,7 @@
               
             </ul>
           </div>
-          {% if autenticacion %}
+          {% if request.session.autenticado %}
           {# agregamos la opcion Cerrar Sesion en caso de que este logueado  #}
             <div lass="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">

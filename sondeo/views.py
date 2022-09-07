@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> b998b65 (preceso)
 from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponse
 # Create your views here.
-from .models import Usuario, Administradores, Certificados, Estado, Respuesta, Sondeos
+from .models import Usuario, Administradores, Certificados, Respuesta, Sondeos
 def inicio (request):
     Son = Sondeos.objects.all()
     Res = Respuesta.objects.all()
