@@ -1,4 +1,3 @@
-from typing import ParamSpecArgs
 from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponse
@@ -74,7 +73,7 @@ def registrarU(request):
 
             u.save()
 
-            return HttpResponse("se agrego")
+            return redirect('/sondeo/login')
 
         except Exception as e:
 

@@ -5,156 +5,157 @@
 
 <div class="container">
 
-    <form action="{% url 'sondeo:registrarU'%}" method="post" class="bg-dark ">
+    <form action="{% url 'sondeo:registrarUsuario'%}" method="post" class="bg-dark ">
         {% csrf_token %}
         <div class="row">
-            <form class="col s12">
+            <div class="col s12">
                 <div class="row">
                     <div class="row">
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="Nombres" type="text" name="nombres_completos" class="validate" required>
-                            <label for="Nombres">Nombres Completos</label>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="tipo_documento" type="text" name="tipo_documento" class="validate" required>
-                            <label for="tipo_documento">Tipo de Documento</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="numero_documento" type="text" name="numero_documento" class="validate">
-                            <label for="numero_documento">Numero de Documento</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="sexo" name="sexo_" type="text" class="validate">
-                            <label for="sexo">Sexo</label>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="last_name" type="number" name="telefono_celular" class="validate">
-                            <label for="last_name">Telefono Celular</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="telefono_fijo" name="telefono_fijo" type="number" class="validate">
-                            <label for="telefono_fijo">Telefono fijo</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="municipio" type="text" name="municipio_" class="validate">
-                            <label for="municipio">Municipio</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="Direccion" type="text" name="direccion_" class="validate">
-                            <label for="Direccion">Direccion</label>
-                        </div>
-                    </div>
-
-                    <div class="row"></div>
+                <div class="row">
                     <div class="input-field col s6">
-                        <input id="Barrrio-Vereda" name="barrio_vereda" type="text" class="validate">
-                        <label for="Barrrio-Vereda">Barrrio-Vereda</label>
+                        <input id="Nombres" type="text" name="nombres_completos" class="validate" required>
+                        <label for="Nombres">Nombres Completos</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" class="validate">
-                            <label for="fecha_nacimiento">Fecha De Nacimiento</label>
-                        </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="tipo_documento" type="text" name="tipo_documento" class="validate" required>
+                        <label for="tipo_documento">Tipo de Documento</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="numero_documento" type="text" name="numero_documento" class="validate">
+                        <label for="numero_documento">Numero de Documento</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="sexo" name="sexo_" type="text" class="validate">
+                        <label for="sexo">Sexo</label>
                     </div>
 
-                    <div class="row">
-                        <div class="input-field col 12">
-                            <input id="Etnia" type="text" name="etnia" class="validate">
-                            <label for="Etnia">Etnia</label>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="row">
-                        <div class="input-field col 12">
-                            <input id="condicion_discapacidad" type="text" name="condicion_discapacidad"
-                                class="validate">
-                            <label for="condicion_discapacidad">Condicion de Discapacidad</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="last_name" type="number" name="telefono_celular" class="validate">
+                        <label for="last_name">Telefono Celular</label>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="input-field col 12">
-                            <input id="estracto_residencial" type="number" name="estracto_residencial" class="validate">
-                            <label for="estracto_residencial">Estracto Residencial</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="telefono_fijo" name="telefono_fijo" type="number" class="validate">
+                        <label for="telefono_fijo">Telefono fijo</label>
                     </div>
+                </div>
 
-                    <div class="row"></div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="municipio" type="text" name="municipio_" class="validate">
+                        <label for="municipio">Municipio</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="Direccion" type="text" name="direccion_" class="validate">
+                        <label for="Direccion">Direccion</label>
+                    </div>
+                </div>
+
+                <div class="row"></div>
+                <div class="input-field col s6">
+                    <input id="Barrrio-Vereda" name="barrio_vereda" type="text" class="validate">
+                    <label for="Barrrio-Vereda">Barrrio-Vereda</label>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" class="validate">
+                        <label for="fecha_nacimiento">Fecha De Nacimiento</label>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="input-field col 12">
-                        <input id="nivel_educativo" type="text" name="nivel_educativo" class="validate">
-                        <label for="nivel_educativo">Nivel Educativo</label>
+                        <input id="Etnia" type="text" name="etnia" class="validate">
+                        <label for="Etnia">Etnia</label>
                     </div>
-                    <div class="row"></div>
-                    <div class="input-field col s12">
-                        <input id="dispositivo_pregunta" type="text" name="dispositivo_pregunta" class="validate">
-                        <label for="dispositivo_pregunta">Tiene Dispositivo?</label>
-                    </div>
-                    <div class="row"></div>
-                    <div class="input-field col s12">
-                        <input id="dispositivo_" type="text" name="dispositivo_" class="validate">
-                        <label for="dispositivo_">Cual Dispositivo tiene?</label>
-                    </div>
-                    <div class="row"></div>
-                    <div class="input-field col s12">
-                        <input id="conectividad_" type="text" name="conectividad_" class="validate">
-                        <label for="conectividad_">Tiene Conectividad?</label>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="tipo_afiliacion" type="text" name="tipo_afiliacion" class="validate">
-                            <label for="tipo_afiliacion">Tipo de Afiliacion</label>
-                        </div>
-                    </div>
+                </div>
 
-                    
-                    <div class="row">
-                        <div class="input-field col s12">
-                        <input id="email" type="email" name="correo" class="validate">
-                        <label for="email">Email</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col 12">
+                        <input id="condicion_discapacidad" type="text" name="condicion_discapacidad"
+                            class="validate">
+                        <label for="condicion_discapacidad">Condicion de Discapacidad</label>
                     </div>
-        
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="usu" type="text" name="usu" class="validate">
-                            <label for="usu">Usuario</label>
-                        </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col 12">
+                        <input id="estracto_residencial" type="number" name="estracto_residencial" class="validate">
+                        <label for="estracto_residencial">Estracto Residencial</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="password" type="password" name="pass" class="validate">
-                            <label for="password">Password</label>
-                        </div>
+                </div>
+
+                <div class="row"></div>
+                <div class="input-field col 12">
+                    <input id="nivel_educativo" type="text" name="nivel_educativo" class="validate">
+                    <label for="nivel_educativo">Nivel Educativo</label>
+                </div>
+                <div class="row"></div>
+                <div class="input-field col s12">
+                    <input id="dispositivo_pregunta" type="text" name="dispositivo_pregunta" class="validate">
+                    <label for="dispositivo_pregunta">Tiene Dispositivo?</label>
+                </div>
+                <div class="row"></div>
+                <div class="input-field col s12">
+                    <input id="dispositivo_" type="text" name="dispositivo_" class="validate">
+                    <label for="dispositivo_">Cual Dispositivo tiene?</label>
+                </div>
+                <div class="row"></div>
+                <div class="input-field col s12">
+                    <input id="conectividad_" type="text" name="conectividad_" class="validate">
+                    <label for="conectividad_">Tiene Conectividad?</label>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="tipo_afiliacion" type="text" name="tipo_afiliacion" class="validate">
+                        <label for="tipo_afiliacion">Tipo de Afiliacion</label>
                     </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                    <input id="email" type="email" name="correo" class="validate">
+                    <label for="email">Email</label>
                     </div>
+                </div>
+    
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="usu" type="text" name="usu" class="validate">
+                        <label for="usu">Usuario</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="password" type="password" name="pass" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </div>
     </form>
-</div>
 
 
 </div>
