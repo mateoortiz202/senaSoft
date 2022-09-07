@@ -3,9 +3,10 @@
 
 <!--    formulario de login-->
 {% block body %}
-  <form action="{% url 'sondeo:logear' %}" method="post">{% csrf_token %}
+  <form action="{% url 'sondeo:logearAdmin' %}" method="post">{% csrf_token %}
+
       <div class="imgcontainer">
-        <h1>Login Usuario</h1>
+        <h1>Login Admin</h1>
         <img src="{% static 'img/sena.jpg' %}" style="width:300px ;height: 300px;" >
       </div>
     
@@ -21,8 +22,8 @@
       </div>
     </form>
     <div class="container" style="text-align: center;">
-      <a class="btn btn-success"  href="{% url 'sondeo:urlAdmin' %}">Soy admin</a>
-      <a class="btn btn-success"  href="#">No tengo usuario</a>
-    </div>
+        <a class="btn btn-success"  href="{% url 'sondeo:login' %}">Soy Usuario</a>
+        <a class="btn btn-success"  href="#">No tengo usuario</a>
+      </div>
 
 {% endblock %}

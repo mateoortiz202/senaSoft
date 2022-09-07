@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% load static %}
+{% block titulo %}Sondeos{% endblock %}
+
+
+
+{% block opcNavAdmin %}
+    {# agregamos una opcion adicional a la barra de navegacion si es que la variable de session contiene el string A que significa Administrador  #}
+    {% if autenticacion.3 == "A" %}
+    <li class="nav-item">
+        <a class="nav-link" href="#">Crear Sondeo</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Esta en administrador</a>
+    </li>
+    {% endif %}
+{% endblock %}
+{% block opcNavAdmin2 %}
+    {# agregamos la opcion Cerrar Sesion en caso de que este logueado  #}
+    {% if autenticacion %}
+        <div lass="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'sondeo:cerrarSesion' %}">Cerrar Sesion</a>
+            </li>
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
+{# --------------------------------desde aqui codigo del body ------------------------------------------------------------ #}
+{% block body %}
+    <h2>Bienvenido a sondeo.net {% if autenticacion %}{{ autenticacion.2 }}{% endif %}</h2>
+
+    {% if sondeos %}
+        {% for sondeito in sondeos %}
+            <div>
+                <h3>{{ sondeito.asunto }}</h3><br/>
+                <section>
+                    {{ sondeito.descripcion }}
+                </section>
+            </div>
+            <h3>Respuestas</h3>
+            {% if respuestas %}
+                {% for respuesta in respuestas %}
+                    
+                    {% if respuesta.idSondeo.idSondeos == sondeito.idSondeos %}
+                        <div>        
+                            <h5>{{ respuesta.idUsuario }}</h5><br/>
+                            <section border="1">
+                                {{ respuesta.respuesta }}
+                            </section>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                
+                
+            {% endif %}
+            
+        {% endfor %}
+
+    {% endif %}
+{% endblock %}
