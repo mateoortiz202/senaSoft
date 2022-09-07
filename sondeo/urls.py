@@ -5,10 +5,8 @@ app_name = 'sondeo'
 
 urlpatterns = [
     path('', views.inicio, name="inicio"),
-
-
-
-
+    path('urlUsuario/', views.registrarUsuario, name="urlUsuario"),
+    path('registrarUsuario/', views.registrarU, name="registrarUsuario"),
     path('login/', views.login, name="login"),
     path('logear=', views.logear, name="logear"),
     
