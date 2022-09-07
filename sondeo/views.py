@@ -6,27 +6,32 @@ from .models import Usuario, Administradores, Certificados, Estado, Respuesta, S
 def inicio (request):
     Son = Sondeos.objects.all()
     Res = Respuesta.objects.all()
-    contexto = {'sondeos': Son, 'respuestas' : Res}
-    return render(request, "index.html", contexto)
+    #del request.session['autenticado']
+    sess = request.session.get('autenticado', False)
+    contexto = {'sondeos': Son, 'respuestas' : Res, 'autenticacion': sess}
+    return render(request, "index/index.html", contexto)
 
 #renderizar login
 def login (request):
-    return render(request, "login.html")
+    return render(request, "login/login.html")
 
 #renderizar validar y redirigir usuario
 def logear(request):
 
     try:
-        usuar=request.POST['user']
+        usuar=request.POST['user']  
         pasword=request.POST['pass']
 
-        u=Usuario.objects.filter(usuario=usuar,contrasena=pasword)
-        print (u)
+        u=Usuario.objects.get(usuario=usuar)
         if u:
-            return HttpResponse('esta logeado')
-        else:
-            return HttpResponse(' no esta logeado')
-        
-
+            if u.contrasena == pasword:
+                #creamos la variable de sesion
+                request.session['autenticado'] = [u.idUsuario, u.contrasena, u.sexo, u.etnia, u.municipio, u.nombresCompletos]
+                return HttpResponse('esta logeado')
+            else:
+                return HttpResponse('contraseña incorrecta')
+        print (u)
+    except Usuario.DoesNotExist:
+        return HttpResponse('Usuario no registrado')
     except Exception as e:
         return HttpResponse(e)    
