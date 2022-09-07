@@ -15,7 +15,9 @@ urlpatterns = [
     
     path('urlAdmin/', views.urlAdmin, name="urlAdmin"),
     path('logAdmin/', views.logAdmin, name="logAdmin"),
-    path('formSondeo/', views.formSondeo, name="formSondeo"),
+    path('urlSondeo/', views.urlSondeo, name="urlSondeo"),
+    path('guardarSondeo/', views.guardarSondeo, name="guardarSondeo"),
+    
     
     
 

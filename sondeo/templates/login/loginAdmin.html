@@ -3,7 +3,7 @@
 
 <!--    formulario de login-->
 {% block body %}
-  <form action="{% url 'sondeo:logearAdmin' %}" method="post">{% csrf_token %}
+  <form action="{% url 'sondeo:logAdmin' %}" method="post">{% csrf_token %}
 
       <div class="imgcontainer">
         <h1>Login Admin</h1>
@@ -23,7 +23,6 @@
     </form>
     <div class="container" style="text-align: center;">
         <a class="btn btn-success"  href="{% url 'sondeo:login' %}">Soy Usuario</a>
-        <a class="btn btn-success"  href="#">No tengo usuario</a>
       </div>
 
 {% endblock %}

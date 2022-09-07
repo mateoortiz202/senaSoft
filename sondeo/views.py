@@ -77,7 +77,9 @@ def registrarU(request):
 
         except Exception as e:
 
-            return HttpResponse(e)    
+            return HttpResponse(e)
+        
+            
 def urlAdmin(request):
     return render(request, "login/loginAdmin.html")
 
@@ -106,7 +108,12 @@ def cerrarSesion(request):
         request.session.modified = True
     return redirect("../")
 
-def formSondeo(request):
+
+def urlSondeo(request):
+    return render(request, "formularios/formSondeos.html")
+    
+
+def guardarSondeo(request):
     sess = request.session.get('autenticado', False)
     if request.session.get['autenticado']:
         Son = Sondeos.objects.all()
@@ -115,5 +122,5 @@ def formSondeo(request):
         contexto = {'sondeos': Son, 'respuestas' : Res, 'usuarios': Usu, 'autenticacion': sess}
         return render(request, "index/sondeos.html", contexto)
     else:
-        #un mensaje con la biblioteca de messages
+        #un mensaje con la biblioteca de messages   
         return HttpResponse(request, "Usted no es administrador")
