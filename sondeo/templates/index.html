@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Bienvenido a sondeo.net</h1>
+    <h1>Bienvenido a sondeo.net {% if autenticacion %}{{ autenticacion.5 }}{% endif %}</h1>
     {% if sondeos %}
         {% for sondeito in sondeos %}
             <div>
@@ -21,7 +21,7 @@
                 {% for respuesta in respuestas %}
                     
                     {% if respuesta.idSondeo.idSondeos == sondeito.idSondeos %}
-                        <div>    
+                        <div>        
                             <h5>{{ respuesta.idUsuario }}</h5><br/>
                             <section border="1">
                                 {{ respuesta.respuesta }}
@@ -29,6 +29,7 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+                
                 
             {% endif %}
             
