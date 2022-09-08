@@ -6,6 +6,7 @@ import datetime
 
 # Create your views here.
 from .models import Usuario, Administradores, Certificados, Respuesta, Sondeos
+#version de prueba incompleta para convertir y comparar fechas
 def convertirFechas(fecha):
     año = (((int(fecha[0])*1000)+(int(fecha[1])*100)+(int(fecha[2])*10) + (int(fecha[3]))))
     mes= (((int(fecha[5]*10)) +(int(fecha[6]))))
