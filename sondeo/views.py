@@ -12,6 +12,19 @@ def inicio (request):
     return render(request, "index/sondeos.html", contexto)
 #renderizar login
 
+def listarCerti(request):
+    usuario = request.session.get('autenticado', False)
+    respuestas = Respuesta.objects.filter(idUsuario=usuario[2])
+    certificados = []
+    for i in respuestas:
+        certificados.append(i.idCertificados)
+    #for i in certificados:
+    #    print(type(i))
+    
+    contexto = {'respuestas': respuestas, 'certificados' : certificados}
+    return render(request, "index/listarCertificados.html", contexto)
+    
+
 def traerRes(request, pk):
     
     son = Sondeos.objects.get(idSondeos=pk)
@@ -19,13 +32,18 @@ def traerRes(request, pk):
     if request.session.get('autenticado'):
         usuario = request.session.get('autenticado')
         contestar = True
+        print("antes del for")
         for i in Res:
+            print(usuario[2])
+            #confilcto con la id de administradores y usuarios
             if i.idUsuario.idUsuario == usuario[2]:
                 contestar = False
                 contexto = {'respuestas' : Res, 'sondeos':son, 'contestar':contestar}
+                print(contestar)
                 return render(request, "index/respuestas.html", contexto)
         if contestar == True:
             contexto = {'respuestas' : Res, 'sondeos':son, 'contestar':contestar}
+            print (contestar)
             return render(request, "index/respuestas.html", contexto)
     else:
         contexto = {'respuestas' : Res, 'sondeos':son}

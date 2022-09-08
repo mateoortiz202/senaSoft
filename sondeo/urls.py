@@ -17,10 +17,7 @@ urlpatterns = [
     
     path('guardarRespuesta/', views.guardarRespuesta, name="guardarRespuesta"),
     path('mostrarRes/<int:pk>', views.traerRes, name="mostrarRes"),
-    
-    
-    
-
-    
+    path('listarCerti/', views.listarCerti, name="listarCerti"),
+        
     
 ]
