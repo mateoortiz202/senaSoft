@@ -119,7 +119,7 @@ class Sondeos(models.Model):
     
 class Respuesta(models.Model):
 
-    estado= models.BooleanField()
+       
     fecha=models.DateTimeField(auto_now_add=True)
     idCertificados=models.ForeignKey(Certificados,on_delete=models.CASCADE)
     idSondeo=models.ForeignKey(Sondeos, on_delete=models.CASCADE)

@@ -69,7 +69,7 @@ def registrarU(request):
             user=request.POST['usu']
             passw=request.POST['pass']
 
-            u=Usuario.objects.create(nombresCompletos=nomComple,tipoDocumetno=tDocumento,numeroDocumento=nDocumento,sexo=sex,telefonoCelular=telCel,telefonoFijo=telFijo,correo=email,municipio=municip,direccion=dir,barrio_vereda=dirVB,fechaNacimiento=fechaN,etnia=eTnia,condicionDiscapacidad=discapacidad,estractoRecidencial=estracto,nivelEducativo=nEducativo,dispositivo=Pispositivo,tipoDispositivo=tDispositvo,conectividad=conecti,tipoAfiliacion=tAfiliacion,usuario=user,contrasena=passw)
+            u=Usuario.objects.create(nombresCompletos=nomComple,tipoDocumento=tDocumento,numeroDocumento=nDocumento,sexo=sex,telefonoCelular=telCel,telefonoFijo=telFijo,correo=email,municipio=municip,direccion=dir,barrio_vereda=dirVB,fechaNacimiento=fechaN,etnia=eTnia,condicionDiscapacidad=discapacidad,estractoRecidencial=estracto,nivelEducativo=nEducativo,dispositivo=Pispositivo,tipoDispositivo=tDispositvo,conectividad=conecti,tipoAfiliacion=tAfiliacion,usuario=user,contrasena=passw)
 
             u.save()
 
@@ -114,13 +114,66 @@ def urlSondeo(request):
     
 
 def guardarSondeo(request):
-    sess = request.session.get('autenticado', False)
-    if request.session.get['autenticado']:
-        Son = Sondeos.objects.all()
-        Res = Respuesta.objects.all()
-        Usu = Usuario.objects.all()        
-        contexto = {'sondeos': Son, 'respuestas' : Res, 'usuarios': Usu, 'autenticacion': sess}
-        return render(request, "index/sondeos.html", contexto)
+    if request.method == 'POST':
+        try:
+            admin = request.POST['administrador']
+            asunto = request.POST['asunto']
+            descripcion = request.POST['descripcion']
+            habilitado = request.POST['habilitado']
+            grupoPoblacional = request.POST['gp']
+            comuna = request.POST['comuna']
+            barrio = request.POST['barrio']
+            imagen = request.POST['imagen']
+            edadMinima = request.POST['edadMinima']
+            edadMaxima = request.POST['edadMaxima']
+            tematica = request.POST['tematica']
+            fechaPublicacion = request.POST['fechaPublicacion']
+            fechaFinPublicacion = request.POST['fechaFinPublicacion']
+            obligatorio = request.POST['obligatorio']
+            
+            u = Sondeos.objects.create(
+                idAdmin = Administradores.objects.get(pk=admin),
+                asunto = asunto,
+                descripcion = descripcion,
+                habilitado = habilitado,
+                grupoPoblacional = grupoPoblacional,
+                comuna = comuna,
+                barrio = barrio,
+                imagen = imagen, 
+                edadMinima = edadMinima,
+                edadMaxima = edadMaxima,
+                tematica = tematica,
+                fechaPublicacion = fechaPublicacion,
+                fechaFinPublicacion = fechaFinPublicacion,
+                obligatorio = obligatorio
+            )
+            u.save()     
+            
+            return redirect("../")
+            #un mensaje con la biblioteca de messages   
+            
+        except Exception as e:
+                return HttpResponse(f'error: {e}')
+            
+            
+def guardarRespuesta(request):
+    if request.method == 'POST':
+        try:
+            
+            
+            
+            idUsuario = request.POST['usuario']
+            respuesta = request.POST['respuesta']
+            idSondeo = request.POST['idSondeo']
+            
+            #random - certificado
+            u = Respuesta.objects.create(
+                idCertificado = 2,
+                idSondeo = idUsuario,
+            )
+        except Exception as e:
+            return HttpResponse(f'error: {e}')
+        return redirect('../')
+    
     else:
-        #un mensaje con la biblioteca de messages   
-        return HttpResponse(request, "Usted no es administrador")
+        return HttpResponse("No hay datos")

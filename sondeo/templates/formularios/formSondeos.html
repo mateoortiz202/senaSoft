@@ -10,6 +10,7 @@
             {% csrf_token %}
             <div class="row">
                 <div class="col s12">
+                    
                     <input type="text" name="administrador" hidden value="1">
     
                     <div class="row">
@@ -28,17 +29,37 @@
                     
                     <div class="row">
                         <div class="input-field col s6"> 
-                            <label for="estado">¿Desea que este habilitado?</label></br></br>
-                            <select class="form-select" id="estado" name="estado">
+                            <label for="habilitado">¿Desea que este habilitado?</label></br></br>
+                            <select class="form-select" id="habilitado" name="habilitado">
                                 <option value="s">Si</option>
                                 <option value="n">No</option>
                             </select>
                         </div>
                     </div>
-
                     <div class="row">   
                         <div class="input-field col s6">
-                            <input id="imagen" name="imagen_" type="text" class="validate">
+                            <input id="gp" name="gp" type="text" class="validate">
+                            <label for="gp">Grupo poblacional al que pertenece</label>
+                        </div>
+    
+                    </div>
+                    <div class="row">   
+                        <div class="input-field col s6">
+                            <input id="comuna" name="comuna" type="text" class="validate">
+                            <label for="comuna">Comuna a la que pertenece/label>
+                        </div>
+    
+                    </div>
+                    <div class="row">   
+                        <div class="input-field col s6">
+                            <input id="barrio" name="barrio" type="text" class="validate">
+                            <label for="barrio">Barrio al que pertenece/label>
+                        </div>
+    
+                    </div>
+                    <div class="row">   
+                        <div class="input-field col s6">
+                            <input id="imagen" name="imagen" type="text" class="validate">
                             <label for="imagen">Escriba la url de la imagen</label>
                         </div>
     
@@ -47,28 +68,36 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <input id="edadMinima" type="number" name="edadMinima" class="validate">
-                            <label for="edadMinima">edadMinima</label>
+                            <label for="edadMinima" value="0">edad Minima</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="edadMinima" type="number" name="edadMaxima" class="validate">
+                            <label for="edadMinima" value="0">edad Maxima</label>
                         </div>
                     </div>
     
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="tematica" name="tematica" type="number" class="validate">
+                            <input id="tematica" name="tematica" type="text" class="validate">
                             <label for="tematica">Tematica</label>
                         </div>
                     </div>
     
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="fechaPublicacion" type="date" name="fechaPublicacion_" class="validate">
-                            <label for="fechaPublicacion">fecha de publicacion del sondeo</label>
+                            <label for="fechaPublicacion">fecha de publicacion del sondeo</label></br></br>
+                            <input id="fechaPublicacion" type="datetime-local" name="fechaPublicacion" class="validate">
+                            
                         </div>
                     </div>
     
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="fechaFinPublicacion" type="date" name="fechaFinPublicacion" class="validate">
-                            <label for="fechaFinPublicacion">fecha Final de la Publicacion</label>
+                            
+                            <label for="fechaFinPublicacion">fecha Final de la Publicacion</label></br></br>    
+                            <input id="fechaFinPublicacion" type="datetime-local" name="fechaFinPublicacion" class="validate">
                         </div>
                     </div>
                     <div class="row">

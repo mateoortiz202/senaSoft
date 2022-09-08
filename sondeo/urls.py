@@ -18,6 +18,9 @@ urlpatterns = [
     path('urlSondeo/', views.urlSondeo, name="urlSondeo"),
     path('guardarSondeo/', views.guardarSondeo, name="guardarSondeo"),
     
+    path('guardarRespuesta/', views.guardarRespuesta, name="guardarRespuesta"),
+    
+    
     
     
 
