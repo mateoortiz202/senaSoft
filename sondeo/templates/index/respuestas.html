@@ -40,12 +40,12 @@
                         <div class="input-field col s6">
                             <label for="respuesta">Respuesta De la Pregunta</label>
                             <textarea name="respuesta" id="respuesta" cols="50" rows="10" class="validate"></textarea>
-
+                            <input type="number" name="idSondeo" value="{{ sondeos.idSondeos }}" hidden>
+                    
+                            <input type="button" onclick="confirmacion()" value="Enviar" >
                         </div>
                     </div>
-                    <input type="number" name="idSondeo" value="{{ sondeos.idSondeos }}" hidden>
                     
-                    <input type="button" onclick="confirmacion()" value="Enviar" >
 
                 </div>
             </form>

@@ -6,28 +6,6 @@
     <h2>Bienvenido a sondeo.net {% if request.session.autenticado %}{{ request.session.autenticado.2 }}{% endif %}</h2>
 
     {% if sondeos %}
-
-        {% for sondeito in sondeos %}
-
-            <div>
-                <h3>{{ sondeito.asunto }}</h3><br/>
-                <a href="{% url 'sondeo:mostrarRes' sondeito.idSondeos %}"> Respuestas</a>
-                <section>
-                    {{ sondeito.descripcion }}
-                </section>
-            </div>
-            <h3>Respuestas</h3>
-            {% if respuestas %}
-                {% for respuesta in respuestas %}
-                    
-                    {% if respuesta.idSondeo.idSondeos == sondeito.idSondeos %}
-                        <div>        
-                            <h5>{{ respuesta.idUsuario }}</h5><br/>
-                            <section border="1">
-                                {{ respuesta.respuesta }}
-                            </section>
-                        </div>
-                    {% endif %}
         <div class="container">
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
@@ -44,7 +22,7 @@
                     <td>{{ sondeito.asunto }}</td>
                     <td>{{ sondeito.descripcion }}</td>
                     <td>-</td>
-                    <td><a href="#">Respuestas</a></td>
+                    <td><a href="{% url 'sondeo:mostrarRes' sondeito.idSondeos %}">Respuestas</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponse
@@ -165,30 +166,38 @@ def guardarSondeo(request):
             
             
 def guardarRespuesta(request):
-    if request.method == 'POST':
-        return HttpResponse ("melo")
-    
-    
     #generera pdf 
     
     
-    # if request.method == 'POST':
-    #     try:
+    if request.method == 'POST':
+        try:
             
             
             
-    #         idUsuario = request.POST['usuario']
-    #         respuesta = request.POST['respuesta']
-    #         idSondeo = request.POST['idSondeo']
-            
-    #         #random - certificado
-    #         u = Respuesta.objects.create(
-    #             idCertificado = 2,
-    #             idSondeo = idUsuario,
-    #         )
-    #     except Exception as e:
-    #         return HttpResponse(f'error: {e}')
-    #     return redirect('../')
-    
-    # else:
-    #     return HttpResponse("No hay datos")
+            idUsuario = request.POST['usuario']
+            respuesta = request.POST['respuesta']
+            idSondeo = request.POST['idSondeo']
+
+            #controlar caso
+            radicado2 = str(random.randint(100000,999999))
+                           
+            certi = Certificados.objects.create(
+                radicao = radicado2 
+            )
+            certi.save()    
+            var = Certificados.objects.filter(radicao = radicado2)
+            print(type(var))
+            #random - certificado
+            # u = Respuesta.objects.create(
+                
+            #     idCertificados = var[0],
+            #     idSondeo = idSondeo,
+            #     idUsuario = idUsuario,
+            #     respuesta = respuesta
+            # )
+            # u.save()
+        except Exception as e:
+            return HttpResponse(f'error: {e}')
+        return redirect('../')
+    else:
+        return HttpResponse("No hay datos, no entraste por donde debias")
