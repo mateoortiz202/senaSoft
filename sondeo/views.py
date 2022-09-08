@@ -2,13 +2,16 @@ import random
 from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponse
+import datetime
 # Create your views here.
 from .models import Usuario, Administradores, Certificados, Respuesta, Sondeos
 def inicio (request):
+    h=datetime.datetime.now()
     Son = Sondeos.objects.all()
+    
     Res = Respuesta.objects.all()
     sess = request.session.get('autenticado', False)        
-    contexto = {'sondeos': Son, 'respuestas' : Res, 'autenticacion': sess}
+    contexto = {'sondeos': Son, 'respuestas' : Res, 'autenticacion': sess, 'fechaToday': h}
     return render(request, "index/sondeos.html", contexto)
 #renderizar login
 

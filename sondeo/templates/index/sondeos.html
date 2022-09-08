@@ -12,19 +12,39 @@
                 <tr>
                     <th>Asunto </th>
                     <th>Descripcion</th>
-                    <th>fecha</th>
+                    <th>fecha de creacion</th>
+                    <th>fecha de Inicio</th>
+                    <th>fecha Final</th>
                     <th>Respuestas</th>
                 </tr>
             </thead>
             <tbody>
-                {% for sondeito in sondeos %}
-                <tr>
-                    <td>{{ sondeito.asunto }}</td>
-                    <td>{{ sondeito.descripcion }}</td>
-                    <td>-</td>
-                    <td><a href="{% url 'sondeo:mostrarRes' sondeito.idSondeos %}">Respuestas</a></td>
-                </tr>
-                {% endfor %}
+                {% if request.session.autenticado.0 == "A" %}
+                    {% for sondeito in sondeos %}
+                    <tr>
+                        <td>{{ sondeito.asunto }}</td>
+                        <td>{{ sondeito.descripcion }}</td>
+                        <td>{{ sondeito.fechaCreacion }}</td>
+                        <td>{{ sondeito.fechaPublicacion }}</td>
+                        <td>{{ sondeito.fechaFinPublicacion }}</td>
+                        <td><a href="{% url 'sondeo:mostrarRes' sondeito.idSondeos %}">Respuestas</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    {# para los ciudadanos registrados y no registrados #}
+                    {% for sondeito in sondeos %}
+                        {#{% if fechaToday < fechaFinPublicacion %}#}
+                            <tr>
+                                <td>{{ sondeito.asunto }}</td>
+                                <td>{{ sondeito.descripcion }}</td>
+                                <td>{{ fechaToday }}</td>
+                                <td>{{ sondeito.fechaPublicacion }}</td>
+                                <td>{{ sondeito.fechaFinPublicacion }}</td>
+                                <td><a href="{% url 'sondeo:mostrarRes' sondeito.idSondeos %}">Respuestas</a></td>
+                            </tr>
+                        
+                    {% endfor %}
+                {% endif %}
             </tbody>
         </table>
         </div>

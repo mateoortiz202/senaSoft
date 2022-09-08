@@ -3,6 +3,38 @@
 
 {# --------------------------------desde aqui codigo del body ------------------------------------------------------------ #}
 {% block body %}
+    <h2>Bienvenido a sondeo.net {% if request.session.autenticado %} {{ request.session.autenticado.1 }}{% endif %}</h2>
+
+    {% if respuestas %}
+        <div class="container">
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Radicado </th>
+                    <th>fecha Generacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if certificados %}
+                
+                {% for certificado in certificados %}
+                <tr>
+                    <td>{{ certificado.radicado}}</td>
+                    <td>{{ certificado.fechaGeneracion }}</td>
+                    {# <td><a href="{% url 'sondeo:mostrarRes' sondeito.idSondeos %}">Respuestas</a></td> #}
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+        </div>
+    {% else %}
+        <div class="container">
+            <h1>No hay certificados registrados</h1>
+        </div>
+    {% endif %}
+
+    
     
 {% endblock %}
 {% block script %}{% endblock %}
