@@ -20,8 +20,13 @@
                     </div>
 
                     <div class="input-field col s6">
-                        <input id="tipo_documento" type="text" name="tipo_documento" class="validate" placeholder="ti - cc - ce  " required>
-                        <label for="tipo_documento">Tipo Documento</label>
+                        <label for="tipo_documento">Tipo Documento</label></br></br>
+                        <select class="form-select" id="tipo_documento" name="tipo_documento">
+                            <option value="ti">Tarjeta de Identidad</option>
+                            <option value="cc">Cedula de ciudadania</option>
+                            <option value="ce">Cedula de Extranjeria</option>
+                        </select>
+                        
                     </div>
 
 
@@ -32,8 +37,14 @@
 
 
                     <div class="input-field col s6">
-                        <input id="sexo" name="sexo_" type="text" class="validate" required>
-                        <label for="sexo">Sexo</label>
+                        <label for="sexo">Sexo</label></br></br>
+                        <select class="form-select" id="sexo_" name="sexo_">
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                            <option value="I">Intersexual</option>
+                            <option value="IN">Indefinido</option>
+                            <option value="P">Prefiero no decir</option>
+                        </select>
                     </div>
 
 
@@ -103,23 +114,42 @@
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="dispositivo_pregunta" type="text" name="dispositivo_pregunta" class="validate" required>
-                        <label for="dispositivo_pregunta">Tiene Dispositivo?</label>
+                        <label for="dispositivo_pregunta">Tiene Dispositivo?</label></br></br>
+                        <select class="form-select" id="dispositivo_pregunta" name="dispositivo_pregunta">
+                            <option value="s">Si</option>
+                            <option value="n">No</option>
+                            
+                        </select>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="dispositivo_" type="text" name="dispositivo_" class="validate" required>
+                        
                         <label for="dispositivo_">Cual Dispositivo tiene?</label>
+                        <select class="form-select" id="dispositivo_" name="dispositivo_">
+                            <option value="TM">T. Movil</option>
+                            <option value="c">Computador</option>
+                            <option value="Tb">Tablet</option>
+                            <option value="Ot">Otro</option>
+                        </select>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="conectividad_" type="text" name="conectividad_" class="validate">
-                        <label for="conectividad_">Tiene Conectividad?</label>
+                        
+                        <label for="conectividad_">Tiene Conectividad?</label></br></br>
+                        <select class="form-select" id="conectividad_" name="conectividad_">
+                            <option value="s">Si</option>
+                            <option value="n">No</option>
+                            
+                        </select>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="tipo_afiliacion" type="text" name="tipo_afiliacion" class="validate">
+                        
                         <label for="tipo_afiliacion">Tipo de Afiliacion</label>
+                        <select class="form-select" id="tipo_afiliacion" name="tipo_afiliacion">
+                            <option value="Sd">Subsidiado</option>
+                            <option value="St">Contributivo</option>
+                        </select>
                     </div>
 
 

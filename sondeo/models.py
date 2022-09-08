@@ -78,8 +78,9 @@ class Administradores(models.Model):
         return self.nombreCompleto
 
 class Certificados(models.Model):
+    idCertificado = models.AutoField(primary_key=True)
     fechaGeneracion = models.DateTimeField(auto_now_add=True)
-    radicao = models.CharField(max_length=255, null=True)
+    radicado = models.CharField(max_length=255, null=True)
 
     def __str__(self) -> str:
         return str(self.fechaGeneracion)
