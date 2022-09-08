@@ -10,6 +10,14 @@ def inicio (request):
     contexto = {'sondeos': Son, 'respuestas' : Res, 'autenticacion': sess}
     return render(request, "index/sondeos.html", contexto)
 #renderizar login
+
+def traerRes(request, pk):
+    
+    son = Sondeos.objects.get(idSondeos=pk)
+    Res = Respuesta.objects.filter(idSondeo=pk)
+    contexto = {'respuestas' : Res, 'sondeos':son}
+    return render(request, "index/respuestas.html", contexto)
+
 def login (request):
     return render(request, "login/login.html")
 
@@ -158,22 +166,29 @@ def guardarSondeo(request):
             
 def guardarRespuesta(request):
     if request.method == 'POST':
-        try:
-            
-            
-            
-            idUsuario = request.POST['usuario']
-            respuesta = request.POST['respuesta']
-            idSondeo = request.POST['idSondeo']
-            
-            #random - certificado
-            u = Respuesta.objects.create(
-                idCertificado = 2,
-                idSondeo = idUsuario,
-            )
-        except Exception as e:
-            return HttpResponse(f'error: {e}')
-        return redirect('../')
+        return HttpResponse ("melo")
     
-    else:
-        return HttpResponse("No hay datos")
+    
+    #generera pdf 
+    
+    
+    # if request.method == 'POST':
+    #     try:
+            
+            
+            
+    #         idUsuario = request.POST['usuario']
+    #         respuesta = request.POST['respuesta']
+    #         idSondeo = request.POST['idSondeo']
+            
+    #         #random - certificado
+    #         u = Respuesta.objects.create(
+    #             idCertificado = 2,
+    #             idSondeo = idUsuario,
+    #         )
+    #     except Exception as e:
+    #         return HttpResponse(f'error: {e}')
+    #     return redirect('../')
+    
+    # else:
+    #     return HttpResponse("No hay datos")

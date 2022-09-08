@@ -6,9 +6,12 @@
     <h2>Bienvenido a sondeo.net {% if request.session.autenticado %}{{ request.session.autenticado.2 }}{% endif %}</h2>
 
     {% if sondeos %}
+
         {% for sondeito in sondeos %}
+
             <div>
                 <h3>{{ sondeito.asunto }}</h3><br/>
+                <a href="{% url 'sondeo:mostrarRes' sondeito.idSondeos %}"> Respuestas</a>
                 <section>
                     {{ sondeito.descripcion }}
                 </section>

@@ -16,7 +16,7 @@ urlpatterns = [
     path('guardarSondeo/', views.guardarSondeo, name="guardarSondeo"),
     
     path('guardarRespuesta/', views.guardarRespuesta, name="guardarRespuesta"),
-    
+    path('mostrarRes/<int:pk>', views.traerRes, name="mostrarRes"),
     
     
     
