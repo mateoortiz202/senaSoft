@@ -6,50 +6,32 @@
     <h2>Bienvenido a sondeo.net {% if request.session.autenticado %}{{ request.session.autenticado.2 }}{% endif %}</h2>
 
     {% if sondeos %}
-        {% for sondeito in sondeos %}
-            <div>
-                <h3>{{ sondeito.asunto }}</h3><br/>
-                <section>
-                    {{ sondeito.descripcion }}
-                </section>
-            </div>
-            <h3>Respuestas</h3>
-            {% if respuestas %}
-                {% for respuesta in respuestas %}
-                    
-                    {% if respuesta.idSondeo.idSondeos == sondeito.idSondeos %}
-                        <div>        
-                            <h5>{{ respuesta.idUsuario }}</h5><br/>
-                            <section border="1">
-                                {{ respuesta.respuesta }}
-                            </section>
-                        </div>
-                    {% endif %}
+        <div class="container">
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Asunto </th>
+                    <th>Descripcion</th>
+                    <th>fecha</th>
+                    <th>Respuestas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sondeito in sondeos %}
+                <tr>
+                    <td>{{ sondeito.asunto }}</td>
+                    <td>{{ sondeito.descripcion }}</td>
+                    <td>-</td>
+                    <td><a href="#">Respuestas</a></td>
+                </tr>
                 {% endfor %}
-                
-                
-            {% endif %}
-
-            {% if request.session.autenticado.0 == "U" %}
-                <form action="{% url 'sondeo:guardarRespuesta' %}">
-                    <div>
-                        <input type="number" name="usuario" value="{% if request.session.autenticado %}{{ request.session.autenticado.2 }}{% endif %}" hidden>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <label for="respuesta">Respuesta De la Pregunta</label>
-                                <textarea name="respuesta" id="respuesta" cols="50" rows="10" class="validate"></textarea>
-
-                            </div>
-                        </div>
-                        <input type="number" name="idSondeo" value="{{ sondeito.idSondeos }}" hidden>
-                    
-                        <button type="submit">Responder</button>
-
-                    </div>
-                </form>
-            {% endif %}
-
-        {% endfor %}
+            </tbody>
+        </table>
+        </div>
 
     {% endif %}
+
+    
+    
 {% endblock %}
+{% block script %}{% endblock %}
