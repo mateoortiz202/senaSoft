@@ -10,10 +10,6 @@ def convertirFechas(fecha):
     año = (((int(fecha[0])*1000)+(int(fecha[1])*100)+(int(fecha[2])*10) + (int(fecha[3]))))
     mes= (((int(fecha[5]*10)) +(int(fecha[6]))))
     dia = (((int(fecha[8])*10) + (int(fecha[9]))))
-    
-    
-        
-        
         
     return True
 
@@ -24,7 +20,7 @@ def convertirFechas(fecha):
 def inicio (request):
     h=datetime.datetime.now()
     Son = Sondeos.objects.all()
-    Res = Respuesta.objects.all()
+    Res = Respuesta.objects.all()       
     sess = request.session.get('autenticado', False)        
     contexto = {'sondeos': Son, 'respuestas' : Res, 'autenticacion': sess, 'fechaToday': h}
     return render(request, "index/sondeos.html", contexto)
