@@ -16,8 +16,25 @@ def traerRes(request, pk):
     
     son = Sondeos.objects.get(idSondeos=pk)
     Res = Respuesta.objects.filter(idSondeo=pk)
-    contexto = {'respuestas' : Res, 'sondeos':son}
-    return render(request, "index/respuestas.html", contexto)
+    if request.session.get('autenticado'):
+        usuario = request.session.get('autenticado')
+        contestar = True
+        for i in Res:
+            if i.idUsuario.idUsuario == usuario[2]:
+                contestar = False
+                contexto = {'respuestas' : Res, 'sondeos':son, 'contestar':contestar}
+                return render(request, "index/respuestas.html", contexto)
+        if contestar == True:
+            contexto = {'respuestas' : Res, 'sondeos':son, 'contestar':contestar}
+            return render(request, "index/respuestas.html", contexto)
+    else:
+        contexto = {'respuestas' : Res, 'sondeos':son}
+        return render(request, "index/respuestas.html", contexto) 
+     
+    
+    
+        
+    
 
 def login (request):
     return render(request, "login/login.html")
@@ -182,20 +199,20 @@ def guardarRespuesta(request):
             radicado2 = str(random.randint(100000,999999))
                            
             certi = Certificados.objects.create(
-                radicao = radicado2 
+                radicado = radicado2 
             )
             certi.save()    
-            var = Certificados.objects.filter(radicao = radicado2)
-            print(type(var))
-            #random - certificado
-            # u = Respuesta.objects.create(
+            var = Certificados.objects.filter(radicado = radicado2)
+            print(var[0].idCertificado)
+            
+            u = Respuesta.objects.create(
                 
-            #     idCertificados = var[0],
-            #     idSondeo = idSondeo,
-            #     idUsuario = idUsuario,
-            #     respuesta = respuesta
-            # )
-            # u.save()
+                idCertificados = Certificados.objects.get(pk=var[0].idCertificado),
+                idSondeo = Sondeos.objects.get(pk=idSondeo),
+                idUsuario = Usuario.objects.get(pk=idUsuario),
+                respuesta = respuesta   
+            )
+            u.save()
         except Exception as e:
             return HttpResponse(f'error: {e}')
         return redirect('../')
