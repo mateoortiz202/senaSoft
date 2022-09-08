@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 63dbf03 (r)
 from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponse
