@@ -44,10 +44,16 @@ def traerRes(request, pk):
                 contexto = {'respuestas' : Res, 'sondeos':son, 'contestar':contestar}
                 print(contestar)
                 return render(request, "index/respuestas.html", contexto)
+            
         if contestar == True:
-            contexto = {'respuestas' : Res, 'sondeos':son, 'contestar':contestar}
-            print (contestar)
-            return render(request, "index/respuestas.html", contexto)
+            if usuario[0] == "A":
+                contestar = False
+                contexto = {'respuestas' : Res, 'sondeos':son, 'contestar':contestar}
+                return render(request, "index/respuestas.html", contexto)
+            else:
+                contexto = {'respuestas' : Res, 'sondeos':son, 'contestar':contestar}
+                print (contestar)
+                return render(request, "index/respuestas.html", contexto)
     else:
         contexto = {'respuestas' : Res, 'sondeos':son}
         return render(request, "index/respuestas.html", contexto) 
