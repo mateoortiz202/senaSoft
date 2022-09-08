@@ -3,12 +3,27 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponse
 import datetime
+
 # Create your views here.
 from .models import Usuario, Administradores, Certificados, Respuesta, Sondeos
+def convertirFechas(fecha):
+    año = (((int(fecha[0])*1000)+(int(fecha[1])*100)+(int(fecha[2])*10) + (int(fecha[3]))))
+    mes= (((int(fecha[5]*10)) +(int(fecha[6]))))
+    dia = (((int(fecha[8])*10) + (int(fecha[9]))))
+    
+    
+        
+        
+        
+    return True
+
+
+
+
+
 def inicio (request):
     h=datetime.datetime.now()
     Son = Sondeos.objects.all()
-    
     Res = Respuesta.objects.all()
     sess = request.session.get('autenticado', False)        
     contexto = {'sondeos': Son, 'respuestas' : Res, 'autenticacion': sess, 'fechaToday': h}
@@ -35,7 +50,6 @@ def traerRes(request, pk):
     if request.session.get('autenticado'):
         usuario = request.session.get('autenticado')
         contestar = True
-        print("antes del for")
         for i in Res:
             print(usuario[2])
             #confilcto con la id de administradores y usuarios
