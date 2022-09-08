@@ -104,8 +104,8 @@ class Sondeos(models.Model):
     edadMinima = models.IntegerField(default=0)
     edadMaxima = models.IntegerField(default=0)
     tematica = models.CharField(max_length=100)
-    fechaPublicacion = models.DateTimeField()
-    fechaFinPublicacion = models.DateTimeField()
+    fechaPublicacion = models.DateField()
+    fechaFinPublicacion = models.DateField()
     fechaCreacion = models.DateTimeField(auto_now_add=True)
     #ob = obligatorio
     ob = (
