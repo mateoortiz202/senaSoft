@@ -24,7 +24,7 @@ def logear(request):
         if u.contrasena == pasword:
             #creamos la variable de sesion
             request.session['autenticado'] = ["U", u.nombresCompletos, u.idUsuario, u.contrasena, u.sexo, u.etnia, u.municipio]
-            return HttpResponse('esta logeado')
+            return redirect('/sondeo')
         else:
             return HttpResponse('contraseña incorrecta')   
         
