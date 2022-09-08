@@ -6,7 +6,7 @@
     <h2>Bienvenido a sondeo.net {% if autenticacion %}{{ autenticacion.2 }}{% endif %}, ahora vamos a crear un nuevo sondeo</h2>
     <div class="container">
 
-        <form action="{% url 'sondeo:guardarSondeo'%}" method="post" class="bg-dark ">
+        <form action="{% url 'sondeo:guardarSondeo'%}" method="post" ">
             {% csrf_token %}
             <div class="row">
                 <div class="col s12">
@@ -46,14 +46,14 @@
                     <div class="row">   
                         <div class="input-field col s6">
                             <input id="comuna" name="comuna" type="text" class="validate">
-                            <label for="comuna">Comuna a la que pertenece/label>
+                            <label for="comuna">Comuna a la que pertenece </label>
                         </div>
     
                     </div>
                     <div class="row">   
                         <div class="input-field col s6">
                             <input id="barrio" name="barrio" type="text" class="validate">
-                            <label for="barrio">Barrio al que pertenece/label>
+                            <label for="barrio">Barrio al que pertenece </label>
                         </div>
     
                     </div>
@@ -70,7 +70,7 @@
                             <input id="edadMinima" type="number" name="edadMinima" class="validate">
                             <label for="edadMinima" value="0">edad Minima</label>
                         </div>
-                    </div>
+                    </div><br>
                     <div class="row">
                         <div class="input-field col s6">
                             <input id="edadMinima" type="number" name="edadMaxima" class="validate">
@@ -88,7 +88,7 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <label for="fechaPublicacion">fecha de publicacion del sondeo</label></br></br>
-                            <input id="fechaPublicacion" type="datetime-local" name="fechaPublicacion" class="validate">
+                            <input id="fechaPublicacion" type="date" name="fechaPublicacion" class="validate">
                             
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <div class="input-field col s6">
                             
                             <label for="fechaFinPublicacion">fecha Final de la Publicacion</label></br></br>    
-                            <input id="fechaFinPublicacion" type="datetime-local" name="fechaFinPublicacion" class="validate">
+                            <input id="fechaFinPublicacion" type="date" name="fechaFinPublicacion" class="validate">
                         </div>
                     </div>
                     <div class="row">
