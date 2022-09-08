@@ -194,6 +194,7 @@ def guardarRespuesta(request):
             idUsuario = request.POST['usuario']
             respuesta = request.POST['respuesta']
             idSondeo = request.POST['idSondeo']
+            us=Usuario.objects.get(idUsuario=idUsuario)
 
             #controlar caso
             radicado2 = str(random.randint(100000,999999))
@@ -213,6 +214,7 @@ def guardarRespuesta(request):
                 respuesta = respuesta   
             )
             u.save()
+            return render(request, 'formularios/certificado.html',{'user':us ,'radicado':radicado2})
         except Exception as e:
             return HttpResponse(f'error: {e}')
         return redirect('../')
